@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-06T11:19:46-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">eiguike</title><subtitle>i'm not sure what to insert here, let it be.</subtitle><entry><title type="html">yeelight com openwrt</title><link href="http://localhost:4000/openwrt/yeelight/blog/post/development/2020/01/05/yeelight-with-openwrt.html" rel="alternate" type="text/html" title="yeelight com openwrt" /><published>2020-01-05T00:14:01-03:00</published><updated>2020-01-05T00:14:01-03:00</updated><id>http://localhost:4000/openwrt/yeelight/blog/post/development/2020/01/05/yeelight-with-openwrt</id><content type="html" xml:base="http://localhost:4000/openwrt/yeelight/blog/post/development/2020/01/05/yeelight-with-openwrt.html">&lt;p&gt;olá! isso daqui será um dos meus primeiros posts deste blog - uma das coisas que queria muito fazer.&lt;/p&gt;
+
+&lt;p&gt;eu não sei muito bem como começar ele mas gostaria de falar um pouco sobre como consegui controlar uma lâmpada yeelight com um roteador.&lt;/p&gt;
+
+&lt;p&gt;quem me conhece sabe das minhas dificuldades em gerenciar o sono, e que foi a grande motivação desse projeto. a idéia é simplesmente me ajudar a acordar cedo e quem sabe realizar um pouco dessa meta de 2020.&lt;/p&gt;
+
+&lt;h3 id=&quot;tecnologias-envolvidas&quot;&gt;tecnologias envolvidas&lt;/h3&gt;
+
+&lt;p&gt;o projeto em si ele é executado em um roteador porquê é o único dispositivo que fica ligado 24/7 aqui em casa, e também ele fica conectado diretamente com a lâmpada yeelight (duh~). Uma das coisas legais de citar é que o roteador permite a instalação do OpenWRT, um sistema operacional Linux especializado para roteadores.&lt;/p&gt;
+
+&lt;p&gt;o roteador utilizado foi o Asus RT-AC51U que possui umas especificações bem legais, porém não possui tanta memória ram, por esse motivo acabei decidindo utilizar a linguagem C para desenvolvimento.  (citar outras libs em outras linguas?)&lt;/p&gt;
+
+&lt;p&gt;a yeelight ela á uma smart lâmpada que é utilizada para automação residencial, no caso, utilizarei ela como um alarme que ficará acendendo e apagando no período de 5 minutos. ela utiliza o protocolo SSDP (UDP, broadcast) para que outros serviços possam identificar a lâmpada na rede, e o envio de comando feito por TCP simples.&lt;/p&gt;
+
+&lt;p&gt;iremos explicar melhor os protocolos, segue comigo.&lt;/p&gt;
+
+&lt;h3 id=&quot;execução&quot;&gt;execução&lt;/h3&gt;
+
+&lt;p&gt;o primeiro passo foi preparar a infraestrutura da aplicação no que consiste em instalar o OpenWRT no roteador; no geral não tive muitos problemas, porém acabei perdendo algumas funcionalidaes do equipamento que ainda não foram implementadas na versão que utilizei (era a única versão disponível para esse rotador 18.06.5).&lt;/p&gt;
+
+&lt;p&gt;a lâmpada yeelight utliiza o protocolo ssdp (modificado) para realizar o descobrimento do dispositivo na rede por outros serviços, um desses serviços poderia o ser google assistant ou então o aplicativo da Yeelight mesmo.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;foto do ssdp&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Funcionamento do SSDP&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;para realizar o descobrimento devemos mandar a seguinte mensagem para o ip &lt;code class=&quot;highlighter-rouge&quot;&gt;239.255.255.250&lt;/code&gt; e porta &lt;code class=&quot;highlighter-rouge&quot;&gt;1982&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;«&amp;lt; imagem do wireshark com o packet com as informações »&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;M-SEARCH * HTTP/1.1
+MAN: &quot;ssdp:discover&quot;
+ST: wifi_bulb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;« explicação do broadcast »&lt;/p&gt;
+
+&lt;p&gt;após o envio da mensagem a lâmpada responderá com a seguinte mensagem:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mensagem de resposta
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;os únicos que iremos extrair da lâmpada é o IP e o ID único, dessa forma já conseguimos enviar comandos.&lt;/p&gt;
+
+&lt;p&gt;— explicar sobre o comando simples tcp&lt;/p&gt;
+
+&lt;p&gt;desenvolvimetno do alarm-yeelight começando com uma versão simples do ssdp, posteriormente&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; ssdp passos&lt;/p&gt;
+
+&lt;p&gt;após a identifcação da lâmpada&lt;/p&gt;
+
+&lt;h3 id=&quot;dificuldades&quot;&gt;dificuldades&lt;/h3&gt;
+
+&lt;h3 id=&quot;o-que-eu-aprendi&quot;&gt;o que eu aprendi?&lt;/h3&gt;
+
+&lt;h3 id=&quot;conclusão&quot;&gt;conclusão&lt;/h3&gt;
+
+&lt;h3 id=&quot;referências&quot;&gt;referências&lt;/h3&gt;</content><author><name>eiguike</name></author><summary type="html">olá! isso daqui será um dos meus primeiros posts deste blog - uma das coisas que queria muito fazer.</summary></entry></feed>

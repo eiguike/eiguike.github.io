@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>yeelight com openwrt</title>
+  </head>
+<style>
+
+body {
+  width: 600px;
+  margin: 0 auto 30px;
+  text-align: justify;
+  font-size: 1.2em;
+}
+
+article header {
+  text-align: center
+}
+
+article #text h3:after {
+  content: " #"; 
+  opacity: 20%;
+} 
+
+</style>
+  <body style="">
+    <article>
+  <header>
+    <h1>yeelight com openwrt</h1>
+    <p><time datetime="2020-01-05T00:14:01-03:00" itemprop="datePublished">Jan 5, 2020</time> &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">eiguike</span></span></p>
+  </header>
+  <hr/>
+  <div id="text">
+    <p>olá! isso daqui será um dos meus primeiros posts deste blog - uma das coisas que queria muito fazer.</p>
+
+<p>eu não sei muito bem como começar ele mas gostaria de falar um pouco sobre como consegui controlar uma lâmpada yeelight com um roteador.</p>
+
+<p>quem me conhece sabe das minhas dificuldades em gerenciar o sono, e que foi a grande motivação desse projeto. a idéia é simplesmente me ajudar a acordar cedo e quem sabe realizar um pouco dessa meta de 2020.</p>
+
+<h3 id="tecnologias-envolvidas">tecnologias envolvidas</h3>
+
+<p>o projeto em si ele é executado em um roteador porquê é o único dispositivo que fica ligado 24/7 aqui em casa, e também ele fica conectado diretamente com a lâmpada yeelight (duh~). Uma das coisas legais de citar é que o roteador permite a instalação do OpenWRT, um sistema operacional Linux especializado para roteadores.</p>
+
+<p>o roteador utilizado foi o Asus RT-AC51U que possui umas especificações bem legais, porém não possui tanta memória ram, por esse motivo acabei decidindo utilizar a linguagem C para desenvolvimento.  (citar outras libs em outras linguas?)</p>
+
+<p>a yeelight ela á uma smart lâmpada que é utilizada para automação residencial, no caso, utilizarei ela como um alarme que ficará acendendo e apagando no período de 5 minutos. ela utiliza o protocolo SSDP (UDP, broadcast) para que outros serviços possam identificar a lâmpada na rede, e o envio de comando feito por TCP simples.</p>
+
+<p>iremos explicar melhor os protocolos, segue comigo.</p>
+
+<h3 id="execução">execução</h3>
+
+<p>o primeiro passo foi preparar a infraestrutura da aplicação no que consiste em instalar o OpenWRT no roteador; no geral não tive muitos problemas, porém acabei perdendo algumas funcionalidaes do equipamento que ainda não foram implementadas na versão que utilizei (era a única versão disponível para esse rotador 18.06.5).</p>
+
+<p>a lâmpada yeelight utliiza o protocolo ssdp (modificado) para realizar o descobrimento do dispositivo na rede por outros serviços, um desses serviços poderia o ser google assistant ou então o aplicativo da Yeelight mesmo.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>foto do ssdp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Funcionamento do SSDP</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>para realizar o descobrimento devemos mandar a seguinte mensagem para o ip <code class="highlighter-rouge">239.255.255.250</code> e porta <code class="highlighter-rouge">1982</code>:</p>
+
+<p>«&lt; imagem do wireshark com o packet com as informações »</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M-SEARCH * HTTP/1.1
+MAN: "ssdp:discover"
+ST: wifi_bulb
+</code></pre></div></div>
+
+<p>« explicação do broadcast »</p>
+
+<p>após o envio da mensagem a lâmpada responderá com a seguinte mensagem:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mensagem de resposta
+</code></pre></div></div>
+<p>os únicos que iremos extrair da lâmpada é o IP e o ID único, dessa forma já conseguimos enviar comandos.</p>
+
+<p>— explicar sobre o comando simples tcp</p>
+
+<p>desenvolvimetno do alarm-yeelight começando com uma versão simples do ssdp, posteriormente</p>
+
+<p>-&gt; ssdp passos</p>
+
+<p>após a identifcação da lâmpada</p>
+
+<h3 id="dificuldades">dificuldades</h3>
+
+<h3 id="o-que-eu-aprendi">o que eu aprendi?</h3>
+
+<h3 id="conclusão">conclusão</h3>
+
+<h3 id="referências">referências</h3>
+
+  </div>
+  <hr/>
+</article>
+
+
+<script>
+  Array.from(document.querySelectorAll("h3")).forEach(function(a){ var anchor = document.createElement("a"); anchor.href = "#" + a.id; a.parentNode.insertBefore(anchor, a); anchor.appendChild(a)})
+</script>
+
+  </body>
+</html>
