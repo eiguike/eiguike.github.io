@@ -66,8 +66,8 @@ softdep drm pre: vfio-pci
 10. instale o Windows e só jogar! 
 
 ### referências
-[How To USE QEMU KVM GPU Passthrough in Linux Using VFIO || GPU Sharing With Virtual Machine](https://www.youtube.com/watch?v=g--fe8_kEcw)
+[How To USE QEMU KVM GPU Passthrough in Linux Using VFIO](https://www.youtube.com/watch?v=g--fe8_kEcw)
 
-[How To install QEMU KVM & VirtManager on Ubuntu || Run Virtual Machines On Ubuntu](https://www.youtube.com/watch?v=4m6eHhPypWI&t=161s)
+[How To install QEMU KVM & VirtManager on Ubuntu](https://www.youtube.com/watch?v=4m6eHhPypWI)
 
 [Enabling 64-bit PCI Addressing in the Switching the TianoCore UEFI BIOS](https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm#Enabling_64-bit_PCI_Addressing_in_the_Switching_the_TianoCore_UEFI_BIOS)
