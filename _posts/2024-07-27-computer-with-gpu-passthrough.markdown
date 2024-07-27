@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cb2c5f95-f939-4423-ae12-1c1c6d1c5d7b)---
+---
 layout: post
 author: eiguike
 title:  "computador pessoal com GPU passthrough"
