@@ -65,6 +65,13 @@ softdep drm pre: vfio-pci
 
 10. instale o Windows e só jogar! 
 
+### possíveis problemas
+infelizmente nem tudo são flores. utilizando este metódo você até consegue jogar de forma perfomática, porém deve-se tomar o cuidado com jogos multiplayer, onde que o anticheat pode te banir de forma permanente.
+
+apesar da máquina ser um Windows, ainda há diversas formas que anticheat conseguem detecter que é uma máquina virtual. eu acabei não indo muito a fundo e acabei me desanimando um pouco, porém para quem quiser procurar mais artigos só utilizar a palavra `virtual machine spoofing`.
+
+é isso galera, obrigado por ler até aqui!
+
 ### referências
 [How To USE QEMU KVM GPU Passthrough in Linux Using VFIO](https://www.youtube.com/watch?v=g--fe8_kEcw)
 
