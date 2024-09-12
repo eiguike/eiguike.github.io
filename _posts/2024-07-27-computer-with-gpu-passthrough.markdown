@@ -18,7 +18,7 @@ o computador é um desktop e é bem parrudo, segue as configurações:
 - 64 GB DDR5
 - AsRock x670e Steel Legend
 
-apesar do processor não ser tão recomendável para realizar isso, a GPU com toda certeza é, e eu não consigo utilizar de maneira 100% a capacidade dela dentro de um Linux. até depois de conseguir fazer essa façanha.
+apesar do processador não ser tão recomendável para realizar isso, a GPU com toda certeza é, e eu não consigo utilizar de maneira 100% a capacidade dela dentro de um Linux. até depois de conseguir fazer essa façanha.
 
 ### mas o que diabos é GPU passthrough?
 R: é basicamente uma forma de você conseguir utilizar a GPU física como se estivesse instalado em uma máquina virtual, sem qualquer interface que possa deixa-lá mais lenta.
@@ -32,7 +32,7 @@ R: caso queira utilizar Linux e o Windows ao mesmo tempo sem perder a performanc
 3. placa mãe deve ser compatível com as features de `immo`, não faço muita ideia do que seja isso;
 
 ### como fazer?
-aqui assumirei que você quer fará isso em um Linux para hostear uma máquina virtual Windows e já tenha o QEMU + Virtual Machine Manager instalado.
+aqui assumirei que você fará isso em um Linux para hostear uma máquina virtual Windows e já tenha o QEMU + Virtual Machine Manager instalado.
 
 1. extraia os IDs da sua GPU, via comando `lspci --n | grep NVIDIA`:
 ![image](https://github.com/user-attachments/assets/3c7ee86e-5650-4586-99c5-bc5ca860c2a0)
