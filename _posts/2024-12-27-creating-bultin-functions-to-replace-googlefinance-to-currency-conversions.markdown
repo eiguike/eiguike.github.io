@@ -8,9 +8,9 @@ categories: google sheets googlefinance custom scripts
 
 no dia de ontem (26 de dezembro de 2024), [o Google fez uma caquinha na hora de exibir os valores da moeda dolar](https://g1.globo.com/economia/noticia/2024/12/26/google-suspende-cotacao-dolar.ghtml) (USD) basicamente exibiu o valor com 30 cents há mais convertidos em BRL.
 
-pode não parecer muito, mas para a moeda do Brasil (BRL) que é desvalorizada, qualquer aumento desse valor pode trazer um grande impacto, seja em inflaćão, investimentos, viagens e etc. e aí está o problema, muitos dos sites de comércio/servićos utilizam do site do Google para avaliar o prećo, e provavelmente podem ter feito algumas negociacṍes não tão favoráveis visto que o valor real não era aquele que estava sendo exibido.
+pode não parecer muito, mas para a moeda do Brasil (BRL) que é desvalorizada, qualquer aumento desse valor pode trazer um grande impacto, seja em inflação, investimentos, viagens e etc. e aí está o problema, muitos dos sites de comércio/serviços utilizam do site do Google para avaliar o preço, e provavelmente podem ter feito algumas negociacṍes não tão favoráveis visto que o valor real não era aquele que estava sendo exibido.
 
-e para evitar problemas maiores, o Google basicamente desativou a funcionalidade de conversão de moedas do próprio site e também no próprio `Google Sheets`, se você utiliza a funćão `GOOGLEFINANCE`, provavelmente neste dia ficou com todas as planilhas com erro.
+e para evitar problemas maiores, o Google basicamente desativou a funcionalidade de conversão de moedas do próprio site e também no próprio `Google Sheets`, se você utiliza a função `GOOGLEFINANCE`, provavelmente neste dia ficou com todas as planilhas com erro.
 
 # e por quê deste artigo?
 
@@ -18,21 +18,21 @@ bom...
 
 eu tenho uma planilha de investimentos que utilizo já faz uns 5 anos desde que comecei minha jornada de investimentos, e corriqueiramente sempre tenho esses problemas do `GOOGLEFINANCE` retornar com erro.
 
-e hoje foi o dia para tentar contornar de vez por toda esse problema dessa funćão retornar erro, ou pelo menos, contornar de uma forma que quebre menos.
+e hoje foi o dia para tentar contornar de vez por toda esse problema dessa função retornar erro, ou pelo menos, contornar de uma forma que quebre menos.
 
-# qual é a ideia da solućão?
+# qual é a ideia da solução?
 
-na minha planilha eu já utilizo corriqueiramente o Google Scripts para criar pequenas funcionalidades de automaćão, se você tem experiência com `Javascript` será um mão na roda, dessa forma, basicamente criarei uma funćão customizada que consegue extrair o valor da conversão da seguinte forma:
+na minha planilha eu já utilizo corriqueiramente o Google Scripts para criar pequenas funcionalidades de automação, se você tem experiência com `Javascript` será um mão na roda, dessa forma, basicamente criarei uma função customizada que consegue extrair o valor da conversão da seguinte forma:
 
 ```
 =CUSTOMFINANCE("USDBRL")
 ```
 
-# instrućões
+# instruções
 
 1. criar uma conta no [OpenExchangeRates](https://openexchangerates.org/)
-  - utilizaremos um servićo de API oferecido pela [OpenExchangeRates](https://openexchangerates.org/) nele você consegue todos os valores das moedas convertidos pelo dolar
-  - estamos utilizando o plano `free` deste servićo, dessa forma, implementaremos um mecanismo de cache de 1 hora para não termos que toda hora consultar os valores de conversão
+  - utilizaremos um serviço de API oferecido pela [OpenExchangeRates](https://openexchangerates.org/) nele você consegue todos os valores das moedas convertidos pelo dolar
+  - estamos utilizando o plano `free` deste serviço, dessa forma, implementaremos um mecanismo de cache de 1 hora para não termos que toda hora consultar os valores de conversão
 
 2. crie um app id e salve
 
@@ -85,4 +85,4 @@ function CUSTOMCURRENCY(input) {
 
 - [OpenExchangeRates API documentation](https://docs.openexchangerates.org/reference/latest-json)
 - [Custom functions in Google Sheets](https://developers.google.com/apps-script/guides/sheets/functions)
-- [GOOGLEFINANCE documentaćão](https://support.google.com/docs/answer/3093281?hl=en)
+- [GOOGLEFINANCE documentação](https://support.google.com/docs/answer/3093281?hl=en)
